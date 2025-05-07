@@ -27,6 +27,7 @@ classifiers = [
 dependencies = [
   "w1thermsensor",
   "RPi.GPIO"
+  "flask",
 ]
 
 [project.urls]
