@@ -16,6 +16,6 @@ def data():
 
 
 if __name__ == '__main__':
-    app.config['celsius'] = sensor([4])
+    app.config['celsius'] = sensor([4,17])
     app.run(host='0.0.0.0',debug=True)
 
