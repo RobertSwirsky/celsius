@@ -11,7 +11,8 @@ class sensor:
 
     def initialize_soft_pullups(self):
         for p in self.sensor_list:
-            GPIO.setup(p, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            pass
+        
         
     def print_temperatures(self):
         for sensor in W1ThermSensor.get_available_sensors():
