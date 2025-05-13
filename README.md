@@ -15,6 +15,13 @@
 ```console
 pip install celsius
 ```
+Be sure to add the following likes to your /boot/firmware/config.txt and reboot
+
+```
+# w1tempteraturesensor
+dtoverlay=w1-gpio,pullup="y"
+dtparam=spi=off
+```
 
 ## License
 

@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template_string, current_app
 from celsius import sensor
-import w1thermsensor
+
 
 app = Flask(__name__)
 @app.route('/')
@@ -22,6 +22,9 @@ def data():
 
 
 if __name__ == '__main__':
-    app.config['celsius'] = sensor([4])
-    app.run(host='0.0.0.0',debug=True)
+    my_sensor = sensor([4])
+    if my_sensor.check_kernel_modules():
+        app.config['celsius'] = my_sensor
+        app.run(host='0.0.0.0',debug=True)
+
 
