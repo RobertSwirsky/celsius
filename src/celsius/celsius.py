@@ -24,15 +24,16 @@ class sensor:
             print(f"Missing required kernel modules: {', '.join(missing)}. Please see readme about config.txt file.")
             return False
         else:
-            from w1thermsensor import W1ThermSensor, Unit
             return True
 
         
     def print_temperatures(self):
+        from w1thermsensor import W1ThermSensor, Unit
         for sensor in W1ThermSensor.get_available_sensors():
             print("Sensor %s has temperature %.2f" % (sensor.id, sensor.get_temperature()))
 
     def get_sensor_list(self):
+        from w1thermsensor import W1ThermSensor, Unit
         return W1ThermSensor.get_available_sensors()
 
 

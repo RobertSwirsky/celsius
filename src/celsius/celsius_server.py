@@ -5,6 +5,7 @@ from celsius import sensor
 app = Flask(__name__)
 @app.route('/')
 def data():
+    import w1thermsensor
     # Check if client wants JSON or HTML (default to JSON)
     data_list = (current_app.config['celsius']).get_sensor_list()
     # XXX TODO: Put in try block to catch "SensorNotReady" error
