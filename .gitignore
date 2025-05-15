@@ -1,3 +1,5 @@
 dist/
+!dist/*.gz
+!dist/*.whl
 __pycache__
 *.pyc
