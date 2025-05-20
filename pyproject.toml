@@ -28,6 +28,7 @@ dependencies = [
   "w1thermsensor",
   "rpi-lgpio",
   "flask",
+  "apscheduler"
 ]
 
 [project.urls]
