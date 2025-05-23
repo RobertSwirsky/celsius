@@ -17,8 +17,18 @@ def data():
     # get deques for all the sensors
     sensor_dict = (current_app.config['logTemps']).sensor_dict
 
-
-    if request.args.get('format') == 'html':
+    # per-sensor, or latest for all sensors?
+    if request.args.get('sensor') is not None:
+        # Return JSON response for a specific sensor
+        sensor_id = request.args.get('sensor')
+        if sensor_id in sensor_dict:
+            result = []
+            for k in sensor_dict[sensor_id]:
+                result.append((k[0], k[1]))
+            return jsonify(result)
+        else:
+            return jsonify({"error": "Sensor not found"}), 404
+    elif request.args.get('format') == 'html':
         # Render list as HTML unordered list
         html_content = "<ul>"
         for k in sensor_dict:
@@ -46,7 +56,7 @@ class logTemperatures:
 
         for d in data:
             if not d.id in self.sensor_dict:
-                self.sensor_dict[d.id] = deque(maxlen=100)
+                self.sensor_dict[d.id] = deque(maxlen=1440)
             self.sensor_dict[d.id].append( (now_utc_str, d.get_temperature() ))
 
 if __name__ == '__main__':
